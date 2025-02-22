@@ -1,12 +1,12 @@
 #include <iostream>
 #include <cstring>
 #include <string>
-#include <unordered_map>
+#include <unordered_set>
 
-std::unordered_map<std::string, std::string> types = {
-  {"echo", "echo is a shell builtin"}, 
-  {"exit", "exit is a shell builtin"},
-  {"type", "type is a shell builtin"}
+std::unordered_set<std::string> commands = {
+  "echo",
+  "exit",
+  "type"
 };
 
 int main() {
@@ -25,12 +25,13 @@ int main() {
       return input.substr(5).empty() ? 0 : std::stoi(input.substr(5));
     } else if(input.find("type") == 0) {
       std::string token = input.substr(5);
-
-      if(types.find(token) != types.end()) {
-        std::cout << types[token] << std::endl;
+      
+      if(commands.find(token) != commands.end()) {
+        std::cout << token << " is a shell builtin" << std::endl;
       } else {
         std::cout << token << ": not found" << std::endl;
       }
+
     } else {
       std::cout << input << ": command not found" << std::endl;
     }
