@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 int main() {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
@@ -7,11 +8,12 @@ int main() {
 
   std::string input;
   while(true) {
-    std::cout << "$ ";
+    std::cout << "$ ";  
     std::getline(std::cin, input);
-    if(strstr(input.c_str(), "exit") != nullptr) {
-      return 0;
+
+    if(input.find("echo") != std::string::npos) {
+      std::string token = input.substr(5);
+      std::cout << token << std::endl;
     }
-    std::cout << input << ": command not found" << std::endl;
   }
 }
