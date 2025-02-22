@@ -14,6 +14,8 @@ int main() {
     if(input.find("echo") != std::string::npos) {
       std::string token = input.substr(5);
       std::cout << token << std::endl;
+    } else {
+      std::cout << input << ": command not found" << std::endl;
     }
   }
 }
